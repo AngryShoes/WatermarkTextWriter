@@ -7,6 +7,6 @@
 |  savePath   |         Generated image file path          |                                 |
 |  waterText  |      Watermark text display in image       |                                 |
 |    color    |          Color of watermark text           |    Type of **System.String**    |
-|    alpha    |          Control of transparency           | Less than 0 or greater than 255 |
+|    alpha    |          Control of transparency           | Less than 0 or greater than 255. The higher the value, the lower the transparency
 | sourceImage | Used for generate new image with watermark |          **Optional**           |
 | originPath  |             Origin image path              |          **Optional**           |
