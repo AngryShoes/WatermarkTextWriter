@@ -9,18 +9,18 @@ namespace JRWatermarkTextWriter
         /// <summary>
         /// Used for write text as watermark in source image
         /// </summary>
-        /// <param name="savePath">Generated iamge file path</param>
+        /// <param name="savePath">Generated image file path</param>
         /// <param name="waterText">Text display in image</param>
         /// <param name="color">The color of text</param>
         /// <param name="alpha">alpha is less than 0 or greater than 255</param>
         /// <param name="sourceImage">
-        /// source image used for generate new iamge with watermark, [Optional]
+        /// source image used for generate new image with watermark, [Optional]
         /// </param>
-        /// <param name="oldPath">source image used for generate new image with watermark,[Optiona]</param>
+        /// <param name="originPath">source image used for generate new image with watermark,[Optiona]</param>
         /// <returns></returns>
-        public static bool WriteWaterMarkText(string savePath, string waterText, string color, int alpha, Image sourceImage = null, string oldPath = null)
+        public static bool WriteWaterMarkText(string savePath, string waterText, string color, int alpha, Image sourceImage = null, string originPath = null)
         {
-            Image image = string.IsNullOrEmpty(oldPath) ? sourceImage : Image.FromFile(oldPath);
+            Image image = string.IsNullOrEmpty(originPath) ? sourceImage : Image.FromFile(originPath);
             Bitmap bitmap = new Bitmap(image.Width, image.Height);
             Graphics graphics = Graphics.FromImage(bitmap);
             graphics.Clear(Color.Transparent);
