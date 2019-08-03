@@ -52,7 +52,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WatermarkTextWriter.cs" />
     <EmbeddedResource Include="ShowImageForm.resx">
       <DependentUpon>ShowImageForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -81,6 +80,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\ImageTemplate.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\JRWatermarkTextWriter\JRWatermarkTextWriter.csproj">
+      <Project>{779d357f-dac2-40ed-af12-a3d06b5f1b4b}</Project>
+      <Name>JRWatermarkTextWriter</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

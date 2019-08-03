@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JRWatermarkTextWriter;
+using System;
 using System.Drawing;
 using System.IO;
 using System.Net;
@@ -20,10 +21,10 @@ namespace WaterMarkDemo
             WebResponse webResponse = webRequest.GetResponse();
             Stream imageStream = webResponse.GetResponseStream();
             byte[] imageBytes = new byte[1024];
-            int length = 0;
             Image sourceImage = null;
             using (MemoryStream ms = new MemoryStream())
             {
+                int length;
                 while ((length = imageStream.Read(imageBytes, 0, imageBytes.Length)) > 0)
                 {
                     ms.Write(imageBytes, 0, length);

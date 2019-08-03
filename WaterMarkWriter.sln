@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29102.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WaterMarkDemo", "WaterMarkDemo.csproj", "{38FB2E29-02C6-4D64-BB23-F0EDC5E088BB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JRWatermarkTextWriter", "JRWatermarkTextWriter\JRWatermarkTextWriter.csproj", "{779D357F-DAC2-40ED-AF12-A3D06B5F1B4B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WaterMarkTestDemo", "WatermarkTextWriter\WaterMarkTestDemo.csproj", "{38FB2E29-02C6-4D64-BB23-F0EDC5E088BB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,6 +13,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{779D357F-DAC2-40ED-AF12-A3D06B5F1B4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{779D357F-DAC2-40ED-AF12-A3D06B5F1B4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{779D357F-DAC2-40ED-AF12-A3D06B5F1B4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{779D357F-DAC2-40ED-AF12-A3D06B5F1B4B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{38FB2E29-02C6-4D64-BB23-F0EDC5E088BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{38FB2E29-02C6-4D64-BB23-F0EDC5E088BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{38FB2E29-02C6-4D64-BB23-F0EDC5E088BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -18,5 +24,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0F5A86DE-F3CA-4CDF-BB97-BA65D8D17685}
 	EndGlobalSection
 EndGlobal
