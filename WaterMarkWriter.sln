@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.29102.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JRWatermarkTextWriter", "JRWatermarkTextWriter\JRWatermarkTextWriter.csproj", "{779D357F-DAC2-40ED-AF12-A3D06B5F1B4B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WaterMarkTestDemo", "WatermarkTextWriter\WaterMarkTestDemo.csproj", "{38FB2E29-02C6-4D64-BB23-F0EDC5E088BB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WaterMarkTestDemo", "WatermarkTestDemo\WaterMarkTestDemo.csproj", "{38FB2E29-02C6-4D64-BB23-F0EDC5E088BB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

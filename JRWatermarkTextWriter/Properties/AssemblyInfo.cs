@@ -3,9 +3,9 @@ using System.Runtime.InteropServices;
 
 // 有关程序集的一般信息由以下 控制。更改这些特性值可修改 与程序集关联的信息。
 [assembly: AssemblyTitle("JRWatermarkTextWriter")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Watermark text writer")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("AngryShoes")]
 [assembly: AssemblyProduct("JRWatermarkTextWriter")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
