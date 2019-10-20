@@ -17,59 +17,20 @@ namespace WaterMarkDemo
 
         private async void button1_Click(object sender, EventArgs e)
         {
-            string sourceImagePath = "https://i.loli.net/2018/09/05/5b8fc930eb809.bmp";
-            var imageStream = await GetImageStream(sourceImagePath);
-            if (imageStream == null) return;
-
-            byte[] imageBytes = new byte[1024];
-            Image sourceImage = null;
-            using (MemoryStream ms = new MemoryStream())
+            var remoteOriginImagePath = "https://i.loli.net/2018/09/05/5b8fc930eb809.bmp";
+            var localOriginImagePath = Path.Combine(Application.StartupPath, "SampleImage\\sampleImage.PNG");
+            var savePath = Path.Combine(Application.StartupPath, "WaterMarkImage.png");
+            var isGenerateSuccess = await WatermarkTextWriter.WriteWaterMarkText(localOriginImagePath, "HelloWold", Color.Red, 30, savePath);
+            if (isGenerateSuccess && File.Exists(savePath))
             {
-                int length;
-                while ((length = imageStream.Read(imageBytes, 0, imageBytes.Length)) > 0)
-                {
-                    ms.Write(imageBytes, 0, length);
-                }
-                sourceImage = Image.FromStream(ms);
+                pictureBox2.Image = Image.FromFile(savePath);
+                return;
             }
-            if (sourceImage != null)
+            else
             {
-                string newPath = Application.StartupPath + "\\WaterMarkImage.png";
-                bool isGenerateSuccess = WatermarkTextWriter.WriteWaterMarkText(newPath, "HelloWold", "Red", 20, sourceImage);
-                if (isGenerateSuccess && File.Exists(newPath))
-                {
-                    pictureBox2.Image = Image.FromFile(newPath);
-                    return;
-                }
-                else
-                {
-                    MessageBox.Show("The generated image path is not exist!");
-                    return;
-                }
+                MessageBox.Show("The generated image path is not exist!");
+                return;
             }
-        }
-
-        private async Task<Stream> GetImageStream(string sourceUrl)
-        {
-            Stream imageStream = null;
-            try
-            {
-                WebRequest webRequest = WebRequest.Create(sourceUrl);
-                WebResponse webResponse = webRequest.GetResponse();
-                imageStream = webResponse.GetResponseStream();
-                await Task.FromResult(imageStream);
-            }
-            catch (TimeoutException timeoutException)
-            {
-                MessageBox.Show(timeoutException.Message);
-                return imageStream;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                return imageStream;
-            }
-            return imageStream;
         }
     }
 }
