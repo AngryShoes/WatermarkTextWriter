@@ -1,6 +1,7 @@
 # JRWatermark Text Writer
 
 - Used for write text as watermark in source image
+- Can write watermark text in local and remote image files
 
 | parameters |            function             |                                      comment                                      |
 | :--------: | :-----------------------------: | :-------------------------------------------------------------------------------: |
