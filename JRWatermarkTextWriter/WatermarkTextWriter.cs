@@ -25,6 +25,7 @@ namespace JRWatermarkTextWriter
         public static async Task<bool> WriteWaterMarkText(string originPath, string waterText, Color color, int alpha, string savePath)
         {
             Image image = await ConvertStreamToImageAsync(originPath);
+            if (image == null) return false;
             Bitmap bitmap = new Bitmap(image.Width, image.Height);
             Graphics graphics = Graphics.FromImage(bitmap);
             graphics.Clear(Color.Transparent);
