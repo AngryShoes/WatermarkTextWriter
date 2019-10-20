@@ -3,7 +3,7 @@
 - Used for write text as watermark in source image
 - Can write watermark text in local and remote image files
 
-| parameters |            function             |                                      comment                                      |
+| Parameters |            Function             |                                      Comment                                      |
 | :--------: | :-----------------------------: | :-------------------------------------------------------------------------------: |
 | originPath |        Origin image path        |
 |  savePath  |    Generated image file path    |                                                                                   |
