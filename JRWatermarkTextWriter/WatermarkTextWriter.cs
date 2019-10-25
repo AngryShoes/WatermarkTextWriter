@@ -22,7 +22,7 @@ namespace JRWatermarkTextWriter
         /// <param name="alpha">alpha is less than 0 or greater than 255</param>
         /// <returns></returns>
         /// 
-        public static async Task<bool> WriteWaterMarkText(string originPath, string waterText, Color color, int alpha, string savePath)
+        public static async Task<bool> WriteWaterMarkTextAsync(string originPath, string waterText, Color color, int alpha, string savePath)
         {
             Image image = await ConvertStreamToImageAsync(originPath);
             if (image == null) return false;

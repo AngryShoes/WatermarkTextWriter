@@ -20,7 +20,7 @@ namespace WaterMarkDemo
             // var remoteOriginImagePath = "https://i.loli.net/2018/09/05/5b8fc930eb809.bmp";
             var localOriginImagePath = Path.Combine(Application.StartupPath, "SampleImage\\sampleImage.PNG");
             var savePath = Path.Combine(Application.StartupPath, "WaterMarkImage.png");
-            var isGenerateSuccess = await WatermarkTextWriter.WriteWaterMarkText(localOriginImagePath, "HelloWorld", Color.Red, 30, savePath);
+            var isGenerateSuccess = await WatermarkTextWriter.WriteWaterMarkTextAsync(localOriginImagePath, "HelloWorld", Color.Red, 255, savePath);
             if (isGenerateSuccess && File.Exists(savePath))
             {
                 pictureBox2.Image = Image.FromFile(savePath);
