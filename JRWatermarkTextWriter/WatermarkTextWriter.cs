@@ -12,6 +12,7 @@ namespace JRWatermarkTextWriter
         private static float x = 10F, y = 20F;
         private static readonly float width = 120.0F;
         private static readonly float height = 40.0F;
+
         /// <summary>
         /// Used for write text as watermark in source image
         /// </summary>
@@ -21,7 +22,6 @@ namespace JRWatermarkTextWriter
         /// <param name="color">The color of text</param>
         /// <param name="alpha">alpha is less than 0 or greater than 255</param>
         /// <returns></returns>
-        /// 
         public static async Task<bool> WriteWaterMarkTextAsync(string originPath, string waterText, Color color, int alpha, string savePath)
         {
             Image image = await ConvertStreamToImageAsync(originPath);
@@ -39,10 +39,10 @@ namespace JRWatermarkTextWriter
                 bitmap.Save(savePath, ImageFormat.Png);
                 tuple = Tuple.Create(true);
             }
-            catch (Exception ex)
+            catch (Exception exception)
             {
                 tuple = Tuple.Create(false);
-                Console.WriteLine(ex.Message);
+                Console.WriteLine(exception.Message);
             }
             finally
             {
@@ -60,14 +60,14 @@ namespace JRWatermarkTextWriter
 
             byte[] imageBytes = new byte[1024];
             Image sourceImage = null;
-            using (MemoryStream ms = new MemoryStream())
+            using (MemoryStream memoryStream = new MemoryStream())
             {
                 int length;
                 while ((length = imageStream.Read(imageBytes, 0, imageBytes.Length)) > 0)
                 {
-                    ms.Write(imageBytes, 0, length);
+                    memoryStream.Write(imageBytes, 0, length);
                 }
-                sourceImage = Image.FromStream(ms);
+                sourceImage = Image.FromStream(memoryStream);
             }
             return await Task.FromResult(sourceImage);
         }
@@ -78,33 +78,35 @@ namespace JRWatermarkTextWriter
             if (File.Exists(sourceUrl))
             {
                 imageStream = new FileStream(sourceUrl, FileMode.Open, FileAccess.Read) as Stream;
-                return imageStream;
             }
             else
             {
                 try
                 {
-                    WebRequest webRequest = WebRequest.Create(sourceUrl);
-                    var webResponse = webRequest.GetResponse() as HttpWebResponse;
-                    if (webResponse.StatusCode == HttpStatusCode.OK)
-                    {
-                        imageStream = webResponse.GetResponseStream();
-                        await Task.FromResult(imageStream);
-                    }
-
+                    imageStream = await GetImageStreamFromRemoteFileAsync(sourceUrl);
                 }
                 catch (TimeoutException timeoutException)
                 {
-                    Console.WriteLine(timeoutException.Message);
-                    return imageStream;
+                    Console.WriteLine($"Get Remote File Timeout...\n{timeoutException.Message}");
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
-                    return imageStream;
                 }
             }
             return imageStream;
+        }
+
+        private static async Task<Stream> GetImageStreamFromRemoteFileAsync(string filePath)
+        {
+            Stream imageStream = null;
+            WebRequest webRequest = WebRequest.Create(filePath);
+            var webResponse = webRequest.GetResponse() as HttpWebResponse;
+            if (webResponse.StatusCode == HttpStatusCode.OK)
+            {
+                imageStream = webResponse.GetResponseStream();
+            }
+            return await Task.FromResult(imageStream);
         }
 
         private static DrawPropertyTool BuildDrawPropertyTool(int alpha, string waterText, Color color)
@@ -146,8 +148,8 @@ namespace JRWatermarkTextWriter
                 x = 0f;
             }
             drawPropertyTool.WaterSolidBrush.Dispose();
-
         }
+
         private class DrawPropertyTool
         {
             public string WaterText { get; set; }
