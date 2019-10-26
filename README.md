@@ -2,8 +2,10 @@
 
 - Used for write text as watermark in source image
 - Can write watermark text in local and remote image files
+  
+`WriteWaterMarkTextAsync` signature manifest
 
-| Parameters |            Function             |                                      Comment                                      |
+| Parameters |            Function             |                                      Notes                                      |
 | :--------: | :-----------------------------: | :-------------------------------------------------------------------------------: |
 | originPath |        Origin image path        |
 |  savePath  |    Generated image file path    |                                                                                   |
